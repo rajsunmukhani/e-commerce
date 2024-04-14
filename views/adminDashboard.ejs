@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            padding: 2vw;
+        }
+        .imageUpload{
+            height: 200px;
+            width: 200px;
+            background-color: #dadada;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        input {
+            width: 25vw;
+            border: none;
+            outline: none;
+            border: 2px solid #dadada;
+            padding: 0.5vw 1vw;
+            border-radius: 25px;
+            margin-top: 2vw;
+            font-size: 1.25vw;
+        }
+
+        input[type="submit"] {
+            width: 10vw;
+            background-color: #D52306;
+            color: #fff;
+        }
+
+        .page4{
+            padding-top: 3.5vw;
+        }
+
+        .foot{
+            width: 100%;
+            position: fixed;
+            left: 0;
+        }
+    </style>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    
+    <div class="nav">
+        <div class="nav-left">
+            <div class="nav-left-part1">
+                <h4>sh<div class="circle"></div>p</h4>
+            </div>
+            <a href="#">HOME</a>
+            <a href="#">ABOUT US</a>
+            <a style="width: 400px;margin-left: 2vw;" href="#">NEW ORDERS RECIEVED</a>
+        </div>
+        <div class="nav-right">
+            <div class="nav-right-part1">
+                <% if(user) { %>
+                    <i class="ri-user-fill"></i>
+                    <h4><%= user.username %></h4>
+                <% } else { %>
+                    <a href="/login"><h4>Login</h4></a>
+                <% } %>
+            </div>
+                <a href="">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div onclick="acceptProductImage()" class="imageUpload">
+            <h1>+</h1>
+            <p>upload your product image here.</p>
+            <h1 style="color: #888; font-size: 0.85vw; font-weight: 500; margin-top: 1vw;">(You can upload upto 3 images)</h1>
+        </div>
+        <form method="post" action="/productUpload" enctype="multipart/form-data"> 
+            <input type="file" hidden name="image" id="productImage" multiple>
+            <input type="text" name="name" id="productName" placeholder="Enter product name here">
+            <input type="text" placeholder="Enter product description" name="description" id="productDescription">
+            <input type="number" name="price" placeholder="Enter price for your product" id="">
+            <input type="submit" value="Submit">
+        </form>
+        <div class="page4">
+            <footer>
+                <div class="foot-p1">
+                    <h4>sh<div class="circle"></div>p</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex voluptate, hic explicabo sint, possimus minima perferendis dicta voluptatem!</p>
+                </div>
+                <div class="foot-p2">
+                    <h4>Quick Links</h4>
+                    <div class="links">
+                        <a href="#">HOME</a>
+                        <a href="#">ABOUT</a>
+                        <a href="#">SHOP</a>
+                        <a href="#">CONTACT</a>
+                    </div>
+                </div>
+                <div class="foot-p3">
+                    <h4>Contact</h4>
+                    <p>+854 258 654</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim odit aspernatur nesciunt.</p>
+                </div>
+                <div class="foot-p4">
+                    <h1>Share feedbacks on:</h1>
+                    <a href="#">abc@xyz.com</a>
+                </div>
+            </footer>
+        </div>
+        <div class="foot">
+            <h5>All &#169 Copyright Reserved</h5>
+        </div>
+    </div>
+
+    <script>
+        function acceptProductImage(){
+            document.querySelector('#productImage').click();
+        }
+    </script>
+</body>
+</html>

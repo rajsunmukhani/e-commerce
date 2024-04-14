@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <div class="nav-left">
+            <div class="nav-left-part1">
+                <h4>sh<div class="circle"></div>p</h4>
+            </div>
+            <a href="#">HOME</a>
+            <a href="#">SHOP</a>
+            <a href="#">ABOUT US</a>
+            <a href="#">BLOG</a>
+        </div>
+        <div class="nav-right">
+            <div class="nav-right-part1">
+                <% if(user) { %>
+                    <i class="ri-user-fill"></i>
+                    <h4><%= user.username %></h4>
+                <% } else { %>
+                    <a href="/login"><h4>Login</h4></a>
+                <% } %>
+            </div>
+                <a href="#">Contact Us</a>
+                <a href="/viewCart" style="position: relative; text-decoration: none; color: #111;"><i class="shopping-bag-icon ri-shopping-bag-line">
+                    <% if(user) { %>
+                        <h6><%= total %></h6>
+                    <% } %>
+                </i></a>
+        </div>
+    </div>
+    
+    
+    <div style="display: flex; height: 100%; width: 100%;" class="cover">
+        <div style="height: 100%; width: 100%; display: flex;
+        align-items: center;
+        justify-content: center; flex-direction: column; gap: 2vw;" class="left">
+            <img class="bigImage" style="border-radius: 25px; height: 25vw; width: 25vw; background-color: black; object-fit: cover;" src="/images/uploads/<%= theProduct.productImage[0] %>" alt="">
+            <div class="smallImages">
+                <% theProduct.productImage.forEach(function(img){ %>
+                    <img onclick="openImage('<%= img %>')" src="/images/uploads/<%= img %>" style="height: 5vw; object-fit: cover; width: 5vw; background-color: red;" alt="">
+                <% }) %>
+            </div>
+        </div>
+        <div style="height: 100%; width: 100%; padding-top: 10vw; display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        /* gap: 5vw; */
+        flex-direction: column;" class="right">
+            <h1 style="text-transform: capitalize;"><%= theProduct.productName %></h1>
+            <h4 style="color: #b2b2b2; font-weight: 400;"><%= theProduct.productDescription %></h4>
+            <h1 style="font-size: 5vw;">₹<%= theProduct.productPrice %></h1>
+            <div style="margin-top: 5vw;" class="buttons">
+                <a style="background-color: #D52306; padding: 1vw 2vw; border-radius: 25px; color: #fff; text-decoration: none;" href="#">Buy Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: -5vw;" class="page4">
+        <footer>
+            <div class="foot-p1">
+                <h4>sh<div class="circle"></div>p</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex voluptate, hic explicabo sint, possimus minima perferendis dicta voluptatem!</p>
+            </div>
+            <div class="foot-p2">
+                <h4>Quick Links</h4>
+                <div class="links">
+                    <a href="#">HOME</a>
+                    <a href="#">ABOUT</a>
+                    <a href="#">SHOP</a>
+                    <a href="#">CONTACT</a>
+                </div>
+            </div>
+            <div class="foot-p3">
+                <h4>Contact</h4>
+                <p>+854 258 654</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim odit aspernatur nesciunt.</p>
+            </div>
+            <div class="foot-p4">
+                <h1>Share feedbacks on:</h1>
+                <a href="#">abc@xyz.com</a>
+            </div>
+        </footer>
+    </div>
+    <div class="foot">
+        <h5>All &#169 Copyright Reserved</h5>
+    </div>
+
+    <script>
+
+        function openImage(img){
+            document.querySelector('.bigImage').setAttribute('src',`/images/uploads/${img}`);
+        }
+    </script>
+</body>
+</html>

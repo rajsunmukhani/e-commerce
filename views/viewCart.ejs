@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+
+        .main{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dets{
+            display: flex;
+            width: 95%;
+            padding: 2vw 4vw;
+            padding-left: 10vw;
+            /* background-color: red; */
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #dadada;
+            border-top: 1px solid #dadada;
+            margin-bottom: 2vw;
+        }
+
+        .dets h3:nth-child(2){
+            margin-left: 8.5vw;
+        }
+        
+    
+        .commodities{
+            width: 100%;
+            /* background-color: red; */
+            display: flex;
+            flex-direction: column;
+            gap: 1vw;
+            padding: 0 3vw;
+        }
+        
+        .cartItemPane{
+            /* background-color: yellow; */
+            /* padding-bottom: 1vw; */
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            /* border-bottom: 1px solid #dadada; */
+            padding: 1vw 4vw;
+            gap: 3vw;
+        }
+
+        .product-details{
+            /* background-color: gray; */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2vw;
+            width: 33%;
+            /* flex-direction: column; */
+        }
+
+        .product-details h3{
+            /* background-color: white; */
+            width: 80%;
+        }
+
+        .product-details p{
+            width: 85%;
+        }
+        
+        .img-cont{
+            flex-shrink: 0;
+            width: 7vw;
+            height: 7vw;
+        }
+
+        .img-cont img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .qty-box{
+            /* background-color: blue; */
+            width: 20%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            text-align: center;
+            gap: 1vw;
+            /* margin-left: 5vw; */
+        }
+
+        .qty-box button{
+            width: 1.5vw;
+            height: 1.5vw;
+            cursor: pointer;
+        }
+
+        .item-price{
+            width: 20%;
+            /* background-color: green; */
+            display: flex;
+            justify-content: flex-end;
+            /* text-align: center; */
+        }
+
+        .item-total{
+            display: flex;
+            justify-content: flex-end;
+            width: 20%;
+            /* background-color: aqua; */
+        }
+
+        .checkout-div{
+            height: 10vw;
+            width: 100%;
+            background-color: #dadada;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            position: fixed;
+            bottom: 0;
+            transition: all ease 0.5s;
+            padding: 1vw 2vw;
+            top: 86%;
+            /* bottom: 0; */
+        }
+
+        .checkout-div h3{
+            width: 25%;
+            padding-bottom: 0.85vw;
+            border-bottom: 1px solid #111;
+        }
+
+        .description{
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            height: 50%;
+            padding: 0 2vw;
+        }
+
+        .description h4{
+            font-weight: 600;
+            font-size: 1.25vw;
+        }
+
+        .description button{
+            padding: 1vw 2vw;
+            background-color: #D52306;
+            outline: none;
+            border: none;
+            border-radius: 25px;
+            font-size: 1vw;
+            color: #f0f0f0;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .nav-right a{
+            background-color: black;
+            color: #fff;
+            padding: 1vw 3vw;
+            border-radius: 25px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div style="top: 0;" class="nav">
+        <div class="nav-left">
+            <div class="nav-left-part1">
+                <h4>sh<div class="circle"></div>p</h4>
+            </div>
+            <a href="/">HOME</a>
+            <a href="#">SHOP</a>
+            <a href="#">ABOUT US</a>
+            <a href="#">BLOG</a>
+        </div>
+        <div class="nav-right">
+            <a href="#">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="main">
+
+        <div class="dets">
+            <h3>Products Details</h3>
+            <h3>Quantity</h3>
+            <h3>Rate</h3>
+            <h3>Total</h3>
+        </div>
+
+        <div class="commodities">
+            <% if(cart.length === 0){ %>
+                <div style="width: 100%; display: flex;
+                align-items: center;
+                justify-content: center; gap: 2vw; flex-direction: column;" class="noItemsPane">
+                    <h1>Nothing in Cart</h1>
+                    <h4>Click here to <a style="color: #D52306; text-decoration: none;" href="/">shop</a> </h4>
+                </div>
+            <% } %>
+            <% cart.forEach(function(product){ %>
+                <div class="cartItemPane">
+                    <div class="product-details">
+                        <div class="img-cont">
+                            <img src="/images/uploads/<%= product.product.productImage[0] %>" alt="">
+                        </div>
+                        <div class="item-detail">
+                            <h3><%= product.product.productName %></h3>
+                            <p><%= product.product.productDescription %></p>
+                        </div>
+                    </div>
+                    <div class="qty-box">
+                        <button onclick="decreaseQty('<%= product.product._id %>')">-</button>
+                        <h4 id="<%= product.product._id %>"><%= product.value %></h4>
+                        <button onclick="increaseQty('<%= product.product._id %>')">+</button>
+                    </div>
+                    <div class="item-price">₹<h3 id="value_<%= product.product._id %>"> <%= product.product.productPrice %></h3></div>
+                    <div class="item-total">₹<h3 id="total_<%= product.product._id %>"> <%= product.product.productPrice * product.value %></h3></div>
+                </div>
+                <div style="width: 100%; padding: 0 2vw; padding-bottom: 3vw; border-bottom: 2px solid #f0f0f0; display: flex; align-items: center; justify-content: flex-end; height: 3vw;" class="cart-remove-product">
+                    <button style="border: none; outline: none; background-color: #D52306; padding: 1vw 2vw; border-radius: 25px; color: #fff;" onclick="removeItem('<%= product.product._id %>')">Remove</button>
+                </div>
+            <% }) %>
+        </div>
+        
+        
+        <div class="page4">
+            <footer>
+                <div class="foot-p1">
+                    <h4>sh<div class="circle"></div>p</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex voluptate, hic explicabo sint, possimus minima perferendis dicta voluptatem!</p>
+                </div>
+                <div class="foot-p2">
+                    <h4>Quick Links</h4>
+                    <div class="links">
+                        <a href="/">HOME</a>
+                        <a href="#">ABOUT</a>
+                        <a href="#">SHOP</a>
+                        <a href="#">CONTACT</a>
+                    </div>
+                </div>
+                <div class="foot-p3">
+                    <h4>Contact</h4>
+                    <p>+91 72230 68964</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim odit aspernatur nesciunt.</p>
+                </div>
+                <div class="foot-p4">
+                    <h1>Share feedbacks on:</h1>
+                    <a href="#">abc@xyz.com</a>
+                </div>
+            </footer>
+        </div>
+
+        <div style="width: 100%; height: 4vw;" class="foot">
+            <h5>All &#169 Copyright Reserved</h5>
+        </div>
+    </div>
+
+    <div class="checkout-div">
+        <h3>Order Summary</h3>
+        <div class="description">
+            <h4>TOTAL ITEMS : <span><%= cart.length %></span></h4>
+            <h4>NET CART VALUE : ₹ <span id="netCartValue" > <%= totalPrice %></span></h4>
+            <button id="rzp-button1">CHECKOUT >>></button>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+
+    var orderId ;
+    $(document).ready(function(){
+        var settings = {
+            "url": "/create/orderId",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "data": JSON.stringify({
+                "amount": "<%= totalPrice %>"
+            }),
+        };
+
+        //creates new orderId everytime
+        $.ajax(settings).done(function (response) {
+            var options = {
+                "key": "rzp_test_X2MjN8xhAZRBX8", // Enter the Key ID generated from the Dashboard
+                "amount": `${response.amount_due} * 100`, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": `${response.currency}`,
+                "name": "SHOP",
+                "description": "Test Transaction",
+                "image": "https://media.istockphoto.com/id/1359585151/photo/cute-blue-robot-giving-thumbs-up-3d.jpg?s=612x612&w=0&k=20&c=xAekoyOf_aboQimdNlGawCGT6uS-N8ELK-PLzMhNvdw=",
+                "order_id": `${response.id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "handler": function (response){
+                    var settings1 = {
+                        "url": "/api/payment/verify",
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                            "Content-Type": "application/json"
+                        },
+                        "data": JSON.stringify({response}),
+                    }
+                    $.ajax(settings1).done(function(response){
+                        if(response === true){
+                            alert('successfull');
+                        }else{
+                            alert('failed');
+                        }
+                    });
+                },
+                "notes": {
+                    "address": "Razorpay Corporate Office"
+                },
+                "theme": {
+                    "color": "#D52306"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response){
+                    alert(response.error.code);
+                    alert(response.error.description);
+                    alert(response.error.source);
+                    alert(response.error.step);
+                    alert(response.error.reason);
+                    alert(response.error.metadata.order_id);
+                    alert(response.error.metadata.payment_id);
+            });
+            document.getElementById('rzp-button1').onclick = function(e){
+                rzp1.open();
+                e.preventDefault();
+            }
+        });
+    });
+        
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+        if (scrollTop > lastScrollTop) {
+            document.querySelector('.checkout-div').style.top = '98%';
+        } else {
+            document.querySelector('.checkout-div').style.top = '86%'
+        }
+    
+    
+        lastScrollTop = scrollTop;
+    });
+
+        
+    async function increaseQty(productId){
+        const response = await axios.post('/increaseItemQty',{productId});
+
+        value = response.data.cartItems[productId];
+
+        var idForPriceUpdate = 'total_' + `${productId}`
+        var v = 0;
+        var intValue = parseInt(document.getElementById('value_'+`${productId}`).textContent);
+
+        // console.log(response);
+        
+        document.getElementById(productId).textContent = value;
+        document.getElementById(idForPriceUpdate).textContent = value * intValue;
+        
+        document.querySelectorAll('.item-total h3').forEach(function(item){
+            v = v + parseInt(item.textContent);
+        })
+        document.getElementById('netCartValue').textContent = v;
+    }
+
+    async function decreaseQty(productId){
+        const response = await axios.post('/decreaseItemQty',{productId});
+
+        value = response.data.cartItems[productId];
+
+        var idForPriceUpdate = 'total_' + `${productId}`
+        var v = 0;
+        var intValue = parseInt(document.getElementById('value_'+`${productId}`).textContent);
+
+        // console.log(response);
+        
+        document.getElementById(productId).textContent = value;
+        document.getElementById(idForPriceUpdate).textContent = value * intValue;
+        
+        document.querySelectorAll('.item-total h3').forEach(function(item){
+            v = v + parseInt(item.textContent);
+        })
+        document.getElementById('netCartValue').textContent = v;
+    }
+
+
+    function removeItem(productId){
+       const response = axios.post(`/remove/${productId}`);
+
+       location.reload();
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+  <div class="flex w-full min-h-screen">
+    <div class="w-full lg:w-1/2 flex items-center justify-center">
+      <div class="px-4 sm:px-0 w-full max-w-sm">
+        <a href="" class="my-12 lg:mb-8 flex items-center justify-center gap-1">
+        <svg data-slot="icon" class="h-6 w-6 text-cyan-500" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"></path>
+        </svg>
+        <span class="font-bold">Login Form</span>
+      </a>
+      
+        <div class="mx-auto">
+          <form action="/login" method="post" class="grid space-y-6">
+            <input name="username" type="username" class="h-10 rounded-md px-3 py-6 border text-lg" placeholder="Username">
+            <input name="password" type="password" class="h-10 rounded-md px-3 py-6 border text-lg" placeholder="Password">
+            <input type="submit" class="h-11 font-medium bg-gray-800 hover:bg-gray-700 text-gray-100 text-lg rounded-md" value="Log In">
+          </form>
+          <p class="pt-5 text-center text-xs text-gray-600">
+              Don't have a account?
+              <a  class="font-semibold text-blue-500" href="/register">Register</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <img class="login-img" src="https://i.pinimg.com/564x/42/07/28/4207284b96ee8e8abc72763114cae175.jpg" alt="">
+  </div>
+  
+</body>
+</html>
