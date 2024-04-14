@@ -407,11 +407,12 @@
     }
 
 
-    function removeItem(productId){
-       const response = axios.post(`/remove/${productId}`);
+    async function removeItem(productId){
+       const response =await axios.post(`/remove/${productId}`);
 
        location.reload();
     }
+    
     </script>
 </body>
 </html>

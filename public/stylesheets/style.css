@@ -8,6 +8,7 @@
 html,body{
   height : 100%;
   width : 100%;
+  overflow-x: hidden;
 }
 
 .login-img{
@@ -48,6 +49,7 @@ html,body{
  width: 10vw;
  text-decoration: none;
  color: #b3b3b3;
+ cursor: pointer;
  /* background-color: yellow; */
 }
 
@@ -445,4 +447,64 @@ footer{
     display: none;
    }
        
+}
+
+
+.side-pane{
+  height: 100%;
+  width: 25%;
+  background-color: #dadada;
+  position: absolute;
+  top: 0;
+  right: -25%;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  transition: all ease 0.5s;
+}
+
+.side-pane-top{
+  /* background-color: blue; */
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 1vw;
+  gap: 0.25vw;
+}
+
+.side-pane-top i{
+  border: 1px solid #dadada;
+  border-radius: 50%;
+  padding: 1vw;
+  background-color: #dadada;
+  color: #D52306;
+}
+
+.side-pane-top i,.side-pane-top h4{
+  font-size: 1.5vw;
+}
+
+.side-pane-bottom {
+  height: 15%;
+  width: 100%;
+  /* background-color: #111; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-pane-bottom a{
+  text-decoration: none;
+  background-color: #D52306;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.25vw;
+  border-radius: 25px;
+  padding: 1vw 2vw;
 }
