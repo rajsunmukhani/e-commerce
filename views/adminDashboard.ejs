@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        *{
+           margin : 0;
+           padding: 0;
+           box-sizing : border-box;
+           font-family : Gilroy;
+        }
+        
+        html,body{
+           height : 100%;
+           width : 100%;
+           overflow-x: hidden ;
+        }
+
         .main{
             padding: 2vw;
         }
@@ -47,6 +60,8 @@
             position: fixed;
             left: 0;
         }
+
+
     </style>
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
@@ -68,8 +83,8 @@
         <div class="nav-right">
             <div class="nav-right-part1">
                 <% if(user) { %>
-                    <i class="ri-user-fill"></i>
-                    <h4><%= user.username %></h4>
+                    <i onclick="openPane()" class="ri-user-fill"></i>
+                    <h4 onclick="openPane()" style="cursor: pointer;"><%= user.username %></h4>
                 <% } else { %>
                     <a href="/login"><h4>Login</h4></a>
                 <% } %>
@@ -122,10 +137,45 @@
         </div>
     </div>
 
+    <div class="side-pane">
+        <div class="side-pane-top" style="display: flex; align-items: center;
+        justify-content: space-between; border-bottom: 1px solid #888;">
+                <% if(user) { %>
+                    <div style="display: flex; align-items: center;">
+                        <i class="ri-user-fill"></i>
+                        <h4 style="cursor: pointer;"><%= user.username %></h4>
+                    </div>
+                <% } else { %>
+                    <a href="/login"><h4>Login</h4></a>
+                <% } %>
+
+                <i onclick="closePane()" style="color: #111; cursor: pointer;" class="ri-close-line"></i>
+        </div>
+        <div class="side-pane-mid"></div>
+        <div class="side-pane-bottom">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
     <script>
         function acceptProductImage(){
             document.querySelector('#productImage').click();
         }
+
+        function openPane(){
+            // alert('hey')
+            document.querySelector('.side-pane').style.right = 0
+        }
+        
+        function closePane(){
+            document.querySelector('.side-pane').style.right = '-25%'
+        }
+
+        window.addEventListener('keydown',function(dets){
+            if(dets.keyCode === 27){
+                closePane();
+            }
+        })
     </script>
 </body>
 </html>
